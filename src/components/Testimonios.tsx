@@ -39,20 +39,22 @@ export default function Testimonios() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <div className="section-divider mx-auto mb-4" />
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] mb-3">
-            Lo que dicen nuestros clientes
+          <span className="eyebrow mb-4">Testimonios</span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] mb-3 mt-4">
+            Lo que dicen <span className="text-gradient-dark">nuestros clientes</span>
           </h2>
-          <p className="text-[#475569] max-w-md mx-auto">
+          <p className="text-[#475569] max-w-md mx-auto text-lg">
             Historias reales de personas que confiaron en PropifyConfia para una de las decisiones más importantes de su vida.
           </p>
         </motion.div>
 
         <div className="max-w-3xl mx-auto">
           {/* Carrusel */}
-          <div className="relative bg-[#F8FAFC] rounded-3xl p-8 sm:p-12 border border-gray-100 shadow-sm overflow-hidden min-h-[280px]">
+          <div className="relative bg-gradient-to-br from-[#0F172A] via-[#142e54] to-[#1B3A6B] rounded-[2rem] p-8 sm:p-14 shadow-2xl overflow-hidden min-h-[300px]">
+            {/* Blob de luz */}
+            <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-[#2563EB]/30 blur-3xl" />
             {/* Comillas decorativas */}
-            <div className="absolute top-6 left-8 text-7xl text-[#2563EB]/10 font-serif leading-none select-none">"</div>
+            <div className="absolute top-4 left-8 text-8xl text-white/10 font-serif leading-none select-none">"</div>
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -73,20 +75,20 @@ export default function Testimonios() {
                   ))}
                 </div>
 
-                <blockquote className="text-lg text-[#0F172A] leading-relaxed font-medium mb-8">
+                <blockquote className="text-xl sm:text-2xl text-white leading-relaxed font-medium mb-8">
                   "{t.texto}"
                 </blockquote>
 
                 <div className="flex items-center gap-4">
                   {/* Avatar placeholder */}
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1B3A6B] to-[#2563EB] flex items-center justify-center flex-shrink-0 shadow-md">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#60A5FA] to-[#2563EB] flex items-center justify-center flex-shrink-0 shadow-lg ring-2 ring-white/20">
                     <span className="text-white font-bold text-sm">
                       {t.nombre.split(" ").map((n) => n[0]).slice(0, 2).join("")}
                     </span>
                   </div>
                   <div>
-                    <p className="font-semibold text-[#0F172A]">{t.nombre}</p>
-                    <p className="text-sm text-[#94A3B8]">{t.operacion} · {t.comuna}</p>
+                    <p className="font-semibold text-white">{t.nombre}</p>
+                    <p className="text-sm text-white/60">{t.operacion} · {t.comuna}</p>
                   </div>
                 </div>
               </motion.div>

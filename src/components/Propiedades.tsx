@@ -9,8 +9,8 @@ import { Operacion, TipoPropiedad } from "@/lib/types";
 
 function badgeColor(op: Operacion) {
   return op === "venta"
-    ? "bg-[#EFF6FF] text-[#1d4ed8]"
-    : "bg-[#F0FDF4] text-[#16a34a]";
+    ? "bg-[#2563EB] text-white"
+    : "bg-[#16a34a] text-white";
 }
 
 function PropCard({ prop, index }: { prop: typeof propiedades[0]; index: number }) {
@@ -27,34 +27,45 @@ function PropCard({ prop, index }: { prop: typeof propiedades[0]; index: number 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.06 }}
-      className="group card-shadow bg-white rounded-2xl overflow-hidden border border-gray-100"
+      className="group card-shadow bg-white rounded-3xl overflow-hidden border border-gray-100/80"
     >
       {/* Imagen / Placeholder */}
-      <div className="relative aspect-[4/3] bg-gradient-to-br from-[#1B3A6B]/10 to-[#2563EB]/20 overflow-hidden">
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-[#2563EB]/40 gap-3">
-          <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="relative aspect-[4/3] overflow-hidden">
+        {/* Gradiente base que simula una propiedad */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1B3A6B] via-[#2563EB] to-[#3B82F6]" />
+        <div className="absolute inset-0 opacity-30" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M0 0h20v20H0zM20 20h20v20H20z'/%3E%3C/g%3E%3C/svg%3E")` }} />
+        {/* Shimmer al hover */}
+        <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-white/80 gap-2 group-hover:scale-110 transition-transform duration-700">
+          <svg className="w-11 h-11 drop-shadow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
               d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/>
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 21V12h6v9"/>
           </svg>
-          <span className="text-xs font-mono text-center px-4">
+          <span className="text-[10px] font-mono text-center px-4 text-white/60">
             Foto real · {prop.imagen}
           </span>
         </div>
-        <span className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold ${badgeColor(prop.operacion)}`}>
-          {prop.operacion === "venta" ? "Venta" : "Arriendo"}
+
+        <span className={`absolute top-3.5 left-3.5 px-3 py-1 rounded-full text-xs font-semibold shadow-lg ${badgeColor(prop.operacion)}`}>
+          {prop.operacion === "venta" ? "En venta" : "En arriendo"}
         </span>
         {prop.destacada && (
-          <span className="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700">
-            Destacada
+          <span className="absolute top-3.5 right-3.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-400 text-amber-950 shadow-lg flex items-center gap-1">
+            ★ Destacada
           </span>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+        {/* Tipo en la parte inferior */}
+        <span className="absolute bottom-3.5 left-3.5 px-2.5 py-1 rounded-lg text-[11px] font-medium glass text-white capitalize">
+          {prop.tipo} · {prop.comuna}
+        </span>
       </div>
 
       {/* Info */}
       <div className="p-5">
-        <h3 className="font-semibold text-[#0F172A] text-base leading-snug mb-1 line-clamp-1">
+        <h3 className="font-bold text-[#0F172A] text-base leading-snug mb-1.5 line-clamp-1 group-hover:text-[#2563EB] transition-colors">
           {prop.titulo}
         </h3>
         <div className="flex items-center gap-1.5 text-[#94A3B8] text-xs mb-4">
@@ -63,30 +74,32 @@ function PropCard({ prop, index }: { prop: typeof propiedades[0]; index: number 
         </div>
 
         {/* Precio */}
-        <div className="mb-4">
-          <p className="text-2xl font-bold text-[#1B3A6B]">{formatUF(prop.precio_uf)}</p>
-          <p className="text-xs text-[#94A3B8]">{formatCLP(prop.precio_clp)} aprox.</p>
+        <div className="mb-4 flex items-end justify-between">
+          <div>
+            <p className="text-2xl font-extrabold text-gradient-dark">{formatUF(prop.precio_uf)}</p>
+            <p className="text-xs text-[#94A3B8]">{formatCLP(prop.precio_clp)} aprox.</p>
+          </div>
         </div>
 
         {/* Specs */}
-        <div className="flex items-center gap-4 text-[#475569] text-sm mb-5 pb-4 border-b border-gray-100">
-          <span className="flex items-center gap-1.5">
+        <div className="flex items-center gap-2 text-[#475569] text-sm mb-5">
+          <span className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#F8FAFC] flex-1 justify-center">
             <Bed className="w-4 h-4 text-[#2563EB]" />
             {prop.dormitorios}
           </span>
-          <span className="flex items-center gap-1.5">
+          <span className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#F8FAFC] flex-1 justify-center">
             <Bath className="w-4 h-4 text-[#2563EB]" />
             {prop.banos}
           </span>
-          <span className="flex items-center gap-1.5">
+          <span className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#F8FAFC] flex-1 justify-center">
             <Maximize className="w-4 h-4 text-[#2563EB]" />
-            {prop.m2} m²
+            {prop.m2}m²
           </span>
         </div>
 
         <button
           onClick={() => document.querySelector("#contacto")?.scrollIntoView({ behavior: "smooth" })}
-          className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-[#F8FAFC] text-[#1B3A6B] font-semibold text-sm hover:bg-[#EFF6FF] hover:text-[#2563EB] transition-colors duration-200 group/btn"
+          className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-[#0F172A] text-white font-semibold text-sm hover:bg-[#2563EB] transition-colors duration-300 group/btn"
         >
           Ver más detalles
           <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -113,7 +126,7 @@ export default function Propiedades() {
   }, [op, tipo, comuna, dormMin]);
 
   return (
-    <section id="propiedades" className="py-24 bg-[#F8FAFC]">
+    <section id="propiedades" className="py-24 bg-[#F8FAFC] mesh-light relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -123,11 +136,11 @@ export default function Propiedades() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <div className="section-divider mb-4" />
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] mb-3">
-            Propiedades disponibles
+          <span className="eyebrow mb-4">Catálogo</span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] mb-3 mt-4">
+            Propiedades <span className="text-gradient-dark">disponibles</span>
           </h2>
-          <p className="text-[#475569] max-w-xl">
+          <p className="text-[#475569] max-w-xl text-lg">
             Encuentra tu próximo hogar o inversión entre nuestras propiedades seleccionadas en Santiago y comunas aledañas.
           </p>
         </motion.div>

@@ -40,8 +40,10 @@ export default function Nosotros() {
 
         {/* Header */}
         <FadeUp delay={0} className="mb-16 max-w-2xl">
-          <div className="section-divider mb-4" />
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] mb-4">Quiénes somos</h2>
+          <span className="eyebrow mb-4">Quiénes somos</span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] mb-4 mt-4">
+            Personas reales, <span className="text-gradient-dark">resultados reales</span>
+          </h2>
           <p className="text-[#475569] leading-relaxed text-lg">
             PropifyConfia nació con una misión concreta: hacer del proceso inmobiliario algo
             claro, justo y accesible para todos. Sin burocracia innecesaria, sin sorpresas al
@@ -76,11 +78,12 @@ export default function Nosotros() {
 
             <FadeUp delay={0.2} className="grid grid-cols-2 gap-4 mt-10">
               {stats.map((s) => (
-                <div key={s.label} className="bg-[#F8FAFC] rounded-2xl p-5 border border-gray-100">
-                  <p className="text-3xl font-bold text-[#1B3A6B]">
+                <div key={s.label} className="group bg-white rounded-2xl p-5 border border-gray-100 card-shadow relative overflow-hidden">
+                  <div className="absolute -bottom-6 -right-6 w-20 h-20 rounded-full bg-[#2563EB]/5 group-hover:bg-[#2563EB]/10 transition-colors" />
+                  <p className="text-4xl font-extrabold text-gradient-dark relative">
                     <AnimatedCounter to={s.value} suffix={s.suffix} />
                   </p>
-                  <p className="text-xs text-[#94A3B8] mt-1">{s.label}</p>
+                  <p className="text-xs text-[#94A3B8] mt-1 relative">{s.label}</p>
                 </div>
               ))}
             </FadeUp>
@@ -139,9 +142,9 @@ export default function Nosotros() {
         {/* Equipo */}
         <div>
           <FadeUp delay={0} className="text-center mb-12">
-            <div className="section-divider mx-auto mb-4" />
-            <h3 className="text-2xl sm:text-3xl font-bold text-[#0F172A] mb-3">
-              El equipo detrás de PropifyConfia
+            <span className="eyebrow mb-4">Nuestro equipo</span>
+            <h3 className="text-2xl sm:text-4xl font-extrabold text-[#0F172A] mb-3 mt-4">
+              El equipo detrás de <span className="text-gradient-dark">PropifyConfia</span>
             </h3>
             <p className="text-[#475569] max-w-xl mx-auto">
               Personas reales comprometidas con tu tranquilidad. Cada operación tiene un nombre y una responsabilidad.

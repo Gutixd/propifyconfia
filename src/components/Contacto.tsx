@@ -57,11 +57,11 @@ export default function Contacto() {
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
-          <div className="section-divider mb-4" />
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] mb-3">
-            Conversemos
+          <span className="eyebrow mb-4">Contacto</span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] mb-3 mt-4">
+            <span className="text-gradient-dark">Conversemos</span>
           </h2>
-          <p className="text-[#475569] max-w-xl">
+          <p className="text-[#475569] max-w-xl text-lg">
             Estamos para ayudarte. Cuéntanos qué necesitas y un ejecutivo se contactará contigo en menos de 24 horas.
           </p>
         </motion.div>

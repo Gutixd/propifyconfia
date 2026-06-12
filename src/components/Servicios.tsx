@@ -53,11 +53,11 @@ export default function Servicios() {
           transition={{ duration: 0.6 }}
           className="mb-14 max-w-2xl"
         >
-          <div className="section-divider mb-4" />
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] mb-3">
-            Nuestros servicios
+          <span className="eyebrow mb-4">Servicios</span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] mb-3 mt-4">
+            Todo lo que <span className="text-gradient-dark">necesitas</span>
           </h2>
-          <p className="text-[#475569]">
+          <p className="text-[#475569] text-lg">
             Soluciones completas para cada etapa del proceso inmobiliario, respaldadas por tecnología y experiencia real en el mercado chileno.
           </p>
         </motion.div>
@@ -70,13 +70,14 @@ export default function Servicios() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.55, delay: i * 0.1, ease: "easeOut" }}
-              className="group bg-white rounded-2xl p-6 border border-gray-100 card-shadow flex flex-col"
+              className="group bg-white rounded-3xl p-6 border border-gray-100/80 card-shadow flex flex-col relative overflow-hidden"
             >
-              <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${s.color} flex items-center justify-center mb-5 shadow-lg group-hover:scale-105 transition-transform duration-300`}>
+              <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#2563EB]/5 group-hover:bg-[#2563EB]/10 transition-colors duration-500" />
+              <div className={`relative w-14 h-14 rounded-2xl bg-gradient-to-br ${s.color} flex items-center justify-center mb-5 glow-blue group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300`}>
                 <s.icon className="w-6 h-6 text-white" />
               </div>
 
-              <h3 className="text-base font-bold text-[#0F172A] mb-2">{s.titulo}</h3>
+              <h3 className="text-base font-bold text-[#0F172A] mb-2 relative">{s.titulo}</h3>
               <p className="text-sm text-[#475569] leading-relaxed mb-5 flex-1">{s.desc}</p>
 
               <ul className="space-y-2 mb-6">
