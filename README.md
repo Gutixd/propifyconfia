@@ -1,6 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PropifyConfia — Sitio Web Oficial
 
-## Getting Started
+> "Tu propiedad, en manos seguras." · Corredora de propiedades digital · Santiago de Chile
+
+## Stack: Next.js 16 · Tailwind CSS v4 · Framer Motion v12 · TypeScript
+
+## Instalación rápida
+
+```bash
+npm install
+npm run dev
+```
+
+Abre [http://localhost:3000](http://localhost:3000)
+
+## Estructura de componentes
+
+```
+src/components/
+├── Navbar.tsx                # Navbar sticky con scroll effect
+├── Hero.tsx                  # Hero con buscador rápido
+├── Propiedades.tsx           # Grid con filtros
+├── Nosotros.tsx              # Equipo (Diego, Valentina, Amaro) + valores
+├── Servicios.tsx             # Tarjetas de servicios
+├── SimuladorHipotecario.tsx  # Calculadora crédito hipotecario chileno
+├── Testimonios.tsx           # Carrusel de reseñas
+├── Contacto.tsx              # Formulario + mapa
+└── Footer.tsx                # Pie de página
+```
+
+## Dónde reemplazar contenido
+
+**Fotos reales** → `/public/images/prop1-6.jpg`, `diego.jpg`, `valentina.jpg`, `amaro.jpg`
+
+**Video hero** → descomenta en `Hero.tsx` y agrega `/public/videos/hero.mp4`
+
+**WhatsApp** → reemplaza `56912345678` con el número real
+
+**Google Maps** → descomenta el `<iframe>` en `Contacto.tsx`
+
+**Supabase (formulario)** → en `Contacto.tsx`, descomenta la lógica de Supabase y agrega variables de entorno
+
+## Variables de entorno (.env.local)
+
+```
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+```
+
+## Deploy
+
+```bash
+vercel --prod
+```
+
+---
+
+*Anteriormente:*
 
 First, run the development server:
 
