@@ -51,9 +51,7 @@ export default function Navbar() {
               className="flex items-center gap-2.5 group"
               whileHover={{ scale: 1.02 }}
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#1B3A6B] flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-sm tracking-tight">PC</span>
-              </div>
+              <img src="/logo.svg" alt="PropifyConfia logo" className="w-10 h-10 drop-shadow-md" />
               <div className="flex flex-col leading-none">
                 <span className={`font-bold text-base tracking-tight transition-colors ${scrolled ? "text-[#1B3A6B]" : "text-white"}`}>
                   Propify<span className="text-[#2563EB]">Confia</span>

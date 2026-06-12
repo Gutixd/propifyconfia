@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <!-- House shape -->
+  <path d="M40 6 L74 34 L68 34 L68 72 L12 72 L12 34 L6 34 Z" fill="#1B3A6B"/>
+  <!-- Key hole ring -->
+  <circle cx="40" cy="44" r="10" fill="white"/>
+  <circle cx="40" cy="44" r="6" fill="#1B3A6B"/>
+  <!-- Key stem -->
+  <rect x="37" y="54" width="6" height="15" rx="3" fill="white"/>
+  <!-- Key teeth -->
+  <rect x="43" y="61" width="5" height="3.5" rx="1.5" fill="white"/>
+  <rect x="43" y="66.5" width="4" height="3.5" rx="1.5" fill="white"/>
+</svg>
